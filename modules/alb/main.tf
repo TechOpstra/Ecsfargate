@@ -2,8 +2,8 @@ resource "aws_lb" "demo_apps_lb" {
   name               = var.alb_name
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.alb_sg.id]
-  subnets            = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
+  security_groups    = var.lb_security_group
+  subnets            = var.lb_subnets
 }
 
 resource "aws_lb_target_group" "patient_tg" {
