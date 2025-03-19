@@ -3,9 +3,14 @@ output "vpc_id" {
   value       = module.vpc.vpc_id
 }
 
-output "subnet_id" {
-  description = "The ID of the public subnet"
-  value       = module.vpc.subnet_id
+output "public_subnet_1_id" {
+  description = "The ID of the first public subnet"
+  value       = module.vpc.public_subnet_1_id
+}
+
+output "public_subnet_2_id" {
+  description = "The ID of the second public subnet"
+  value       = module.vpc.public_subnet_2_id
 }
 
 output "internet_gateway_id" {
