@@ -34,12 +34,12 @@ variable "ecs_task_family" {
 
 variable "patient_service_image" {
   description = "Docker image URL for the patient service"
-  default     = ""
+  default     = "741448937052.dkr.ecr.us-east-1.amazonaws.com/patient-service:latest"
 }
 
 variable "appointment_service_image" {
   description = "Docker image URL for the appointment service"
-  default     = ""
+  default     = "741448937052.dkr.ecr.us-east-1.amazonaws.com/appointment-service:latest"
 }
 
 variable "ecs_execution_role_name" {
