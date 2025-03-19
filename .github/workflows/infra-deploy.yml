@@ -9,7 +9,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
 
       - name: Configure AWS credentials for Terraform
         uses: aws-actions/configure-aws-credentials@v1
