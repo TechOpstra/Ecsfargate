@@ -48,6 +48,11 @@ variable "ecs_execution_role_name" {
   default     = "ecs-execution-role"
 }
 
+variable "ecs_task_role_arn" {
+  description = "The ARN of the ECS task role"
+  type        = string
+}
+
 variable "ecs_task_role_name" {
   description = "Name of the ECS Task Role"
   type        = string
