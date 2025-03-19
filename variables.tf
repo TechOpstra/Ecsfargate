@@ -22,6 +22,26 @@ variable "availability_zone" {
   default     = "us-east-1a"
 }
 
+variable "ecs_cluster_name" {
+  description = "Name of the ECS Cluster"
+  default     = "demo-ecs-cluster"
+}
+
+variable "ecs_task_family" {
+  description = "ECS Task Definition Family"
+  default     = "demo-task-family"
+}
+
+variable "patient_service_image" {
+  description = "Docker image URL for the patient service"
+  default     = ""
+}
+
+variable "appointment_service_image" {
+  description = "Docker image URL for the appointment service"
+  default     = ""
+}
+
 variable "ecs_execution_role_name" {
   description = "Name of the ECS Execution Role"
   type        = string
@@ -33,3 +53,16 @@ variable "ecs_task_role_name" {
   type        = string
   default     = "ecs-task-role"
 }
+
+variable "alb_name" {
+  description = "Name of the Application Load Balancer"
+  type        = string
+  default     = "demo-apps-alb"
+}
+
+variable "log_group_name" {
+  description = "Name of the CloudWatch log group"
+  type        = string
+  default     = "ecs-cluster-logs"
+}
+

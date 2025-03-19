@@ -1,0 +1,11 @@
+aws_region                = "us-east-1"
+vpc_cidr_block            = "10.0.0.0/16"
+subnet_cidr_block         = "10.0.1.0/24"
+availability_zone         = "us-east-1a"
+alb_name                  = "demo-apps-alb"
+ecs_cluster_name          = "demo-ecs-cluster"
+ecs_task_family           = ""
+patient_service_image     = ""
+appointment_service_image = ""
+
+log_group_name            = "ecs-cluster-logs"

@@ -25,22 +25,22 @@ output "route_table_id" {
 
 output "ecs_service_sg_id" {
   description = "The ID of the ECS Service Security Group"
-  value       = aws_security_group.ecs_service_sg.id
+  value       = module.vpc.ecs_service_sg.id
 }
 
 output "alb_sg_id" {
   description = "The ID of the Application Load Balancer Security Group"
-  value       = aws_security_group.alb_sg.id
+  value       = module.vpc.alb_sg.id
 }
 
 output "ecs_execution_role_arn" {
   description = "The ARN of the ECS execution role"
-  value       = aws_iam_role.ecs_execution_role.arn
+  value       = module.ecs.ecs_execution_role.arn
 }
 
 output "ecs_task_role_arn" {
   description = "The ARN of the ECS task role"
-  value       = aws_iam_role.ecs_task_role.arn
+  value       = module.ecs.ecs_task_role.arn
 }
 
 output "ecs_cluster_name" {
@@ -69,4 +69,9 @@ output "patient_service_ip" {
 
 output "appointment_service_ip" {
   value = module.ecs.appointment_service_ip
+}
+
+output "alb_dns_name" {
+  description = "DNS name of the alb"
+  value       = module.alb.alb_dns_name
 }
