@@ -2,16 +2,15 @@ resource "aws_lb" "demo_apps_lb" {
   name               = var.alb_name
   internal           = false
   load_balancer_type = "application"
-  security_groups    = var.lb_security_group
-  subnets            = var.lb_subnets
+  security_groups    = [aws_security_group.alb_sg.id]
+  subnets            = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
 }
-
 
 resource "aws_lb_target_group" "patient_tg" {
   name     = "patient-service-tg"
   port     = 3000
   protocol = "HTTP"
-  vpc_id   = var.vpc_id
+  vpc_id   = aws_vpc.demo_vpc.id
   target_type = "ip"
 
   health_check {
@@ -24,12 +23,11 @@ resource "aws_lb_target_group" "patient_tg" {
   }
 }
 
-
 resource "aws_lb_target_group" "appointment_tg" {
   name     = "appointment-service-tg"
   port     = 3001
   protocol = "HTTP"
-  vpc_id   = var.vpc_id
+  vpc_id   = aws_vpc.demo_vpc.id
   target_type = "ip" 
 
   health_check {
@@ -41,7 +39,6 @@ resource "aws_lb_target_group" "appointment_tg" {
     matcher             = "200"
   }
 }
-
 
 resource "aws_lb_listener" "http_listener" {
   load_balancer_arn = aws_lb.demo_apps_lb.arn
@@ -57,7 +54,6 @@ resource "aws_lb_listener" "http_listener" {
     }
   }
 }
-
 
 resource "aws_lb_listener_rule" "patient_service_rule" {
   listener_arn = aws_lb_listener.http_listener.arn
@@ -75,7 +71,6 @@ resource "aws_lb_listener_rule" "patient_service_rule" {
   }
 }
 
-
 resource "aws_lb_listener_rule" "appointment_service_rule" {
   listener_arn = aws_lb_listener.http_listener.arn
   priority     = 2
@@ -91,4 +86,3 @@ resource "aws_lb_listener_rule" "appointment_service_rule" {
     }
   }
 }
-
