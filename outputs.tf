@@ -30,7 +30,7 @@ output "alb_sg_id" {
 
 output "ecs_execution_role_arn" {
   description = "The ARN of the ECS execution role"
-  value       = module.ecs.ecs_execution_role.arn
+  value       = module.iam.ecs_execution_role_arn
 }
 
 output "ecs_task_role_arn" {
@@ -85,5 +85,8 @@ output "appointment_tg_arn" {
   value       = module.alb.appointment_tg_arn
 }
 
-output "log_group_name" { value = module.cloudwatch.log_group_name }
+output "log_group_name" {
+  description = "The name of the CloudWatch log group"
+  value       = module.cloudwatch.log_group_name
+}
 
