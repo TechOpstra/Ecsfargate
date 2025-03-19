@@ -10,8 +10,8 @@ variable "alb_name" {
 }
 
 variable "lb_security_group" {
-  description = "The security group for the ALB"
-  type        = string
+  description = "List of security group IDs for the load balancer"
+  type        = list(string)
 }
 
 variable "lb_subnets" {
