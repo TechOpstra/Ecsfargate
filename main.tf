@@ -36,8 +36,8 @@ module "alb" {
   source = "./modules/alb"
 
   alb_name               = var.alb_name
-  patient_service_ip     = var.patient_service_ip
-  appointment_service_ip = var.appointment_service_ip
+  patient_service_ip     = module.ecs.patient_service_ip
+  appointment_service_ip = module.ecs.appointment_service_ip
   vpc_id                 = module.vpc.vpc_id
   lb_security_group      = [module.vpc.alb_sg_id]
   lb_subnets             = [module.vpc.public_subnet_1_id, module.vpc.public_subnet_2_id]
