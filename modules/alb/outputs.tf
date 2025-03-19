@@ -3,6 +3,11 @@ output "alb_id" {
   value       = aws_lb.demo_apps_lb.id
 }
 
+output "alb_arn" {
+  description = "The ARN of the application load balancer"
+  value       = aws_lb.demo_apps_lb.arn
+}
+
 output "alb_dns_name" {
   description = "The DNS name of the application load balancer"
   value       = aws_lb.demo_apps_lb.dns_name
