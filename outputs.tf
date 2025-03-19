@@ -3,11 +3,6 @@ output "vpc_id" {
   value       = module.vpc.vpc_id
 }
 
-output "vpc_name" {
-  description = "The name of the VPC"
-  value       = module.vpc.vpc_name
-}
-
 output "subnet_id" {
   description = "The ID of the public subnet"
   value       = module.vpc.subnet_id
@@ -36,11 +31,6 @@ output "alb_sg_id" {
 output "ecs_execution_role_arn" {
   description = "The ARN of the ECS execution role"
   value       = module.ecs.ecs_execution_role.arn
-}
-
-output "ecs_task_role_arn" {
-  description = "The ARN of the ECS task role"
-  value       = module.ecs.ecs_task_role.arn
 }
 
 output "ecs_cluster_name" {
