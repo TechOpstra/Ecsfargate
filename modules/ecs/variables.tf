@@ -48,3 +48,7 @@ variable "patient_tg_arn" {
   type        = string
 }
 
+variable "alb_arn" {
+  description = "The ARN of the application load balancer"
+  type        = string
+}
