@@ -51,6 +51,7 @@ variable "ecs_execution_role_name" {
 variable "ecs_task_role_arn" {
   description = "The ARN of the ECS task role"
   type        = string
+  default     = module.ecs.ecs_task_role.arn
 }
 
 variable "ecs_task_role_name" {
