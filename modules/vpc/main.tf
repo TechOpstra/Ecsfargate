@@ -19,18 +19,33 @@ resource "aws_route_table" "route_table" {
   }
 }
 
-resource "aws_subnet" "public_subnet" {
+resource "aws_subnet" "public_subnet_1" {
   vpc_id            = aws_vpc.demo_vpc.id
-  cidr_block        = var.subnet_cidr_block
-  availability_zone = var.availability_zone
+  cidr_block        = var.subnet_cidr_block_1
+  availability_zone = var.availability_zone_1
   map_public_ip_on_launch = true
   tags = {
-    Name = "demo-public-subnet"
+    Name = "demo-public-subnet-1"
   }
 }
 
-resource "aws_route_table_association" "route_table_association" {
-  subnet_id      = aws_subnet.public_subnet.id
+resource "aws_subnet" "public_subnet_2" {
+  vpc_id            = aws_vpc.demo_vpc.id
+  cidr_block        = var.subnet_cidr_block_2
+  availability_zone = var.availability_zone_2
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "demo-public-subnet-2"
+  }
+}
+
+resource "aws_route_table_association" "route_table_association_1" {
+  subnet_id      = aws_subnet.public_subnet_1.id
+  route_table_id = aws_route_table.route_table.id
+}
+
+resource "aws_route_table_association" "route_table_association_2" {
+  subnet_id      = aws_subnet.public_subnet_2.id
   route_table_id = aws_route_table.route_table.id
 }
 
@@ -59,7 +74,6 @@ resource "aws_security_group" "ecs_service_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
 
 resource "aws_security_group" "alb_sg" {
   name        = "alb-sg"
