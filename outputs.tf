@@ -33,6 +33,11 @@ output "ecs_execution_role_arn" {
   value       = module.ecs.ecs_execution_role.arn
 }
 
+output "ecs_task_role_arn" {
+  description = "The ARN of the ECS task role"
+  value       = module.iam.ecs_task_role_arn
+}
+
 output "ecs_cluster_name" {
   value = module.ecs.ecs_cluster_name
 }
