@@ -72,18 +72,18 @@ output "alb_dns_name" {
 }
 output "alb_id" {
   description = "The ID of the application load balancer"
-  value       = aws_lb.demo_apps_lb.id
+  value       =  module.alb.alb_id
 }
 
 output "patient_tg_arn" {
   description = "The ARN of the patient service target group"
-  value       = aws_lb_target_group.patient_tg.arn
+  value       = module.alb.patient_tg_arn
 }
 
 output "appointment_tg_arn" {
   description = "The ARN of the appointment service target group"
-  value       = aws_lb_target_group.appointment_tg.arn
+  value       = module.alb.appointment_tg_arn
 }
 
-output "log_group_name" { value = aws_cloudwatch_log_group.ecs_logs.name }
+output "log_group_name" { value = module.cloudwatch.log_group_name }
 
