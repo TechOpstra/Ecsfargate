@@ -32,7 +32,7 @@ module "ecs" {
 module "alb" {
   source                     = "./modules/alb"
   alb_name                   = var.alb_name
-  lb_security_group          = module.vpc.alb_sg_id
+  lb_security_group          = [module.vpc.alb_sg_id]
   lb_subnets                 = [module.vpc.subnet_id]
   vpc_id                     = module.vpc.vpc_id
   patient_service_ip         = module.ecs.patient_service_ip 
