@@ -3,9 +3,14 @@ output "vpc_id" {
   value       = aws_vpc.demo_vpc.id
 }
 
-output "subnet_id" {
-  description = "The ID of the public subnet"
-  value       = aws_subnet.public_subnet.id
+output "public_subnet_1_id" {
+  description = "The ID of the first public subnet"
+  value       = aws_subnet.public_subnet_1.id
+}
+
+output "public_subnet_2_id" {
+  description = "The ID of the second public subnet"
+  value       = aws_subnet.public_subnet_2.id
 }
 
 output "internet_gateway_id" {
@@ -24,9 +29,6 @@ output "ecs_service_sg_id" {
 }
 
 output "alb_sg_id" {
-  description = "The ID of the Application Load Balancer Security Group"
+  description = "The ID of the ALB Security Group"
   value       = aws_security_group.alb_sg.id
 }
-
-
-
