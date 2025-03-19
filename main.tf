@@ -1,9 +1,11 @@
 module "vpc" {
   source = "./modules/vpc"
 
-  vpc_cidr_block       = var.vpc_cidr_block
-  subnet_cidr_block    = var.subnet_cidr_block
-  availability_zone    = var.availability_zone
+  vpc_cidr_block        = var.vpc_cidr_block
+  subnet_cidr_block_1   = var.subnet_cidr_block_1
+  subnet_cidr_block_2   = var.subnet_cidr_block_2
+  availability_zone_1   = var.availability_zone_1
+  availability_zone_2   = var.availability_zone_2
 }
 
 module "iam" {
@@ -31,13 +33,14 @@ module "ecs" {
 }
 
 module "alb" {
-  source                     = "./modules/alb"
-  alb_name                   = var.alb_name
-  lb_security_group          = [module.vpc.alb_sg_id]
-  lb_subnets                 = [module.vpc.subnet_id]
-  vpc_id                     = module.vpc.vpc_id
-  patient_service_ip         = module.ecs.patient_service_ip 
-  appointment_service_ip     = module.ecs.appointment_service_ip
+  source = "./modules/alb"
+
+  alb_name               = var.alb_name
+  patient_service_ip     = var.patient_service_ip
+  appointment_service_ip = var.appointment_service_ip
+  vpc_id                 = module.vpc.vpc_id
+  lb_security_group      = [module.vpc.alb_sg_id]
+  lb_subnets             = [module.vpc.public_subnet_1_id, module.vpc.public_subnet_2_id]
 }
 
 module "cloudwatch" {
