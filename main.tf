@@ -24,7 +24,7 @@ module "ecs" {
   patient_service_image     = var.patient_service_image
   appointment_service_image = var.appointment_service_image
   subnet_id                 = module.vpc.subnet_id
-  security_group_id         = module.vpc.ecs_service_sg.id
+  security_group_id         = module.vpc.ecs_service_sg_id
   appointment_tg_arn        = module.alb.patient_tg_arn
   patient_tg_arn            = module.alb.appointment_tg_arn
 }
@@ -32,7 +32,7 @@ module "ecs" {
 module "alb" {
   source                     = "./modules/alb"
   alb_name                   = var.alb_name
-  lb_security_group          = module.vpc.alb_sg.id
+  lb_security_group          = module.vpc.alb_sg_id
   lb_subnets                 = [module.vpc.subnet_id]
   vpc_id                     = module.vpc.vpc_id
   patient_service_ip         = module.ecs.patient_service_ip 
