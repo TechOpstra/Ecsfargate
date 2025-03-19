@@ -10,7 +10,6 @@ module "iam" {
   source = "./modules/iam" 
 
   ecs_execution_role_name = var.ecs_execution_role_name
-  ecs_task_role_name      = var.ecs_task_role_name
 }
 
 
