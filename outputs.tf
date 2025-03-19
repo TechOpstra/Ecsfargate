@@ -79,3 +79,6 @@ output "appointment_tg_arn" {
   description = "The ARN of the appointment service target group"
   value       = aws_lb_target_group.appointment_tg.arn
 }
+
+output "log_group_name" { value = aws_cloudwatch_log_group.ecs_logs.name }
+
