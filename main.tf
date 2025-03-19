@@ -27,6 +27,7 @@ module "ecs" {
   security_group_id         = module.vpc.ecs_service_sg_id
   appointment_tg_arn        = module.alb.patient_tg_arn
   patient_tg_arn            = module.alb.appointment_tg_arn
+  alb_arn                   = module.alb.alb_arn
 }
 
 module "alb" {
