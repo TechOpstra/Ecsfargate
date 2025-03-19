@@ -18,8 +18,8 @@ module "ecs" {
   
   ecs_cluster_name          = var.ecs_cluster_name
   ecs_task_family           = var.ecs_task_family
-  ecs_execution_role_arn    = module.vpc.ecs_execution_role_arn
-  ecs_task_role_arn         = var.ecs_task_role_arn
+  ecs_execution_role_arn    = module.ecs.ecs_execution_role.arn
+  ecs_task_role_arn         = module.ecs.ecs_task_role.arn
   patient_service_image     = var.patient_service_image
   appointment_service_image = var.appointment_service_image
   subnet_id                 = module.vpc.subnet_id
