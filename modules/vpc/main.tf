@@ -63,6 +63,7 @@ resource "aws_security_group" "ecs_service_sg" {
 
 resource "aws_security_group" "alb_sg" {
   name        = "alb-sg"
+  vpc_id      = aws_vpc.demo_vpc.id
   description = "Allow inbound HTTP traffic to the Load Balancer"
 
   ingress {
