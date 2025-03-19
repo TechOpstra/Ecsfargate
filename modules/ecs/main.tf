@@ -94,7 +94,7 @@ resource "aws_ecs_service" "patient_service" {
     container_name   = "patient-service"
     container_port   = 3000
   }
-  depends_on = [aws_lb.demo_apps_lb, aws_lb_target_group.patient_tg]
+  depends_on = [var.alb_arn, var.patient_tg_arn]
 }
 
 
@@ -115,5 +115,5 @@ resource "aws_ecs_service" "appointment_service" {
     container_name   = "appointment-service"
     container_port   = 3001
   }
-  depends_on = [aws_lb.demo_apps_lb, aws_lb_target_group.appointment_tg]
+  depends_on = [var.alb_arn, var.appointment_tg_arn]
 }
