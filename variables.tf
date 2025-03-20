@@ -36,21 +36,25 @@ variable "availability_zone_2" {
 
 variable "ecs_cluster_name" {
   description = "Name of the ECS Cluster"
+  type        = string
   default     = "demo-ecs-cluster"
 }
 
 variable "ecs_task_family" {
   description = "ECS Task Definition Family"
+   type        = string
   default     = "demo-task-family"
 }
 
 variable "patient_service_image" {
   description = "Docker image URL for the patient service"
+   type        = string
   default     = "741448937052.dkr.ecr.us-east-1.amazonaws.com/patient-service:latest"
 }
 
 variable "appointment_service_image" {
   description = "Docker image URL for the appointment service"
+   type        = string
   default     = "741448937052.dkr.ecr.us-east-1.amazonaws.com/appointment-service:latest"
 }
 
